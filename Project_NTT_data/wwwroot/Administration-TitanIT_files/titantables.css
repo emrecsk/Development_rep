@@ -1,0 +1,62 @@
+﻿/* Overwrite css for datatables */
+
+div.dt-buttons {
+    position: relative;
+    float: right;
+    font-size: 90%;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: 1px solid #ddd !important;
+    padding: 10px 10px !important;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 8px 10px;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #ddd;
+    padding-top: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.content-wrapper {
+    background-color: #F2F2F2;
+}
+
+.buttons-create {
+    background-color: var(--main-color) !important;
+    color: white !important;
+}
+
+.buttons-edit {
+    background-color: var(--main-color) !important;
+    color: white !important;
+}
+
+.buttons-remove {
+    background-color: #DC3545 !important;
+    color: white !important;
+}
+
+.tableheader {
+    float: left;
+    color: #363636;
+    font-size: 1.1rem;
+    padding-left: 4px;
+}
+
+.tablesection {
+    background-color: white;
+}
+
+table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
+    background-color: var(--table-selectedrow);
+}
+
+.dataTables_wrapper .dataTables_filter {
+    padding-right: 2rem;
+}
+
+

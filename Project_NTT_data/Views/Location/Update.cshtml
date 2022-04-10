@@ -1,0 +1,15 @@
+﻿@model Layer.Entity.Entities.Location
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h1>Update Location</h1>
+    <form class="form-group" method="post">
+        @Html.Label("Location Name")
+        @Html.TextBoxFor(x=>x.Loc_Name, new{ @class = "form-control"})
+        <br />
+    @Html.HiddenFor(x=>x.Id)
+    <button class="btn btn-info">Update</button>
+    </form>
+</div>

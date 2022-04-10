@@ -1,0 +1,31 @@
+﻿@model Layer.Entity.Entities.Devices
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h1>Update The Device</h1>
+<form class="form-group" method="post">
+    @Html.Label("Device Name")
+    @Html.TextBoxFor(x=>x.Device_Name, new{ @class = "form-control"})    
+    <br />
+    @Html.Label("Location")
+    @Html.DropDownListFor(x => x.LocationId, (List<SelectListItem>)ViewBag.locations, new { @class = "form-control" })
+    <br />
+    @Html.Label("Types")
+    @Html.DropDownListFor(x => x.TypesId, (List<SelectListItem>)ViewBag.types, new { @class = "form-control" })
+    <br />
+    @Html.Label("Organization")
+    @Html.DropDownListFor(x => x.OrganizationId, (List<SelectListItem>)ViewBag.organizations, new { @class = "form-control" })
+    <br />
+    <div class="margin-bottom">
+    @Html.Label("Is Active")
+    @Html.CheckBoxFor(x=>x.IsActive)
+    </div>          
+    <br />
+    @Html.HiddenFor(x=>x.Id)
+    <button class="btn btn-info">Update</button>
+</form>
+</div>  

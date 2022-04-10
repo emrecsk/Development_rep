@@ -1,0 +1,17 @@
+﻿@model Layer.Entity.Entities.Organization
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>Update Organization</h1>
+    <form class="form-group" method="post">
+        @Html.Label("Organization Name")
+        @Html.TextBoxFor(x=>x.Org_Name, new{ @class = "form-control"})
+        <br />
+    @Html.HiddenFor(x=>x.Id)
+    <button class="btn btn-info">Update</button>
+    </form>
+</div>
+

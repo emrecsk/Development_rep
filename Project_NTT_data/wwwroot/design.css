@@ -1,0 +1,21 @@
+:root {
+    --main-color: #0A2075;
+    --table-selectedrow: #C2CEE6;
+    --pageheader-textcolor: #363636; 
+    --tileheader-textcolor: #363636;
+}
+
+a:hover { text-decoration: none !important; }
+
+.card:hover .card-body {
+  background-color: #e9eaeb;
+}
+
+.company-logo, .main-sidebar:hover .company-logo {
+    background-image: url(/staticwebcontent/custom-css/titan/logo.png) !important;
+    background-size: contain !important;
+}
+.sidebar-collapse .company-logo {
+    background-image: url(/staticwebcontent/custom-css/titan/logo_small.png) !important; 
+    background-size: contain !important;
+}

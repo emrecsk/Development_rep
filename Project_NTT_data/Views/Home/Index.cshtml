@@ -1,0 +1,205 @@
+﻿@model Project_NTT_data.Models.DeviceViewModelList
+@{
+    ViewData["Title"] = "Home Page";
+    @addTagHelper *, Project_NTT_data.Extensions
+}
+
+<section class="adminsection">
+    <div class="mt-4 tablesection">
+        <div class="px-4 py-4">
+            <table class="row-border dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="Organizations_info">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Device Name</th>
+                        <th>Location</th>
+                        <th>Organization</th>
+                        <th>Type</th>
+                        <th>Active</th>
+                        <th colspan="2">Controls</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.DeviceList)
+                {
+                    <tr>
+                        <td>@item.DeviceId</td>
+                        <td>@item.Device_Name</td>
+                        <td>@item.Loc_Name</td>
+                        <td>@item.OrganizationName</td>
+                        <td>@item.TypeName</td>
+                        @if (item.IsActive)
+                        {
+                            <td><i class="fa fa-check"></i></td>
+                        }
+                        else
+                        {
+                            <td><i class="fa fa-times"></i></td>
+
+                        }
+                        <td>@Html.ActionLink("Edit", "Update", "Home", new { id = item.DeviceId }, new { @class = "dt-button buttons-selected buttons-edit" })</td>
+                        <td>@Html.ActionLink("Delete", "Delete", "Home", new { id = item.DeviceId }, new { @class = "dt-button buttons-selected buttons-remove"}) </td>
+                    </tr>
+                }
+                @Html.HiddenFor(x=>x.IsAdmin)
+                <a class="dt-button" asp-controller="Home" asp-action="newdevice"><span>Add New Device</span></a>
+                <a class="dt-button" asp-controller="Home" asp-action="ChangeUser">
+                    @if (@Model.IsAdmin)
+                    {
+                        <span>Be A User For Aarhus University</span>
+                    }
+                    else
+                    {
+                        <span>Be A Admin</span>
+                    }
+                </a>
+
+            </table>
+        </div>
+    </div>
+</section>
+
+<h2>Locations</h2>
+<section class="adminsection">
+    <div class="mt-4 tablesection">
+        <div class="px-4 py-4">
+            <table class="row-border dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="Organizations_info">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Location</th>
+                        <th colspan="2">Controls</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.Location)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Loc_Name</td>
+                        @if (@Model.IsAdmin)
+                        {
+                            <td>@Html.ActionLink("Edit", "Update", "Location", new { id = item.Id }, new { @class = "dt-button buttons-selected buttons-edit"})</td>
+                            <td>@Html.ActionLink("Delete", "Delete", "Location", new { id = item.Id }, new { @class = "dt-button buttons-selected buttons-remove"})</td>
+
+                        }
+                        else
+                        {
+                            <td> <button class="dt-button buttons-selected buttons-edit disabled" type="button" disabled="disabled"><span>Edit</span></button></td>
+                            <td> <button class="dt-button buttons-selected buttons-remove disabled" type="button" disabled="disabled"><span>Delete</span></button></td>
+                        }
+                    </tr>
+                }
+                <a class="dt-button" asp-controller="Location" asp-action="newlocation"><span>Add New Location</span></a>
+            </table>
+        </div>
+    </div>
+</section>
+
+<h2>Organizations</h2>
+<section class="adminsection">
+    <div class="mt-4 tablesection">
+        <div class="px-4 py-4">
+            <table class="row-border dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="Organizations_info">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Organization</th>
+                        <th colspan="2">Controls</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.Organization)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Org_Name</td>
+                        @if (@Model.IsAdmin)
+                        {
+                        <td>@Html.ActionLink("Edit", "Update", "Organization", new { id = item.Id }, new { @class = "dt-button buttons-selected buttons-edit" })</td>
+                        <td>@Html.ActionLink("Delete", "Delete", "Organization", new { id = item.Id }, new { @class = "dt-button buttons-selected buttons-remove" })</td>
+                        }
+                        else
+                        {
+                            <td> <button class="dt-button buttons-selected buttons-edit disabled" type="button" disabled="disabled"><span>Edit</span></button></td>
+                            <td> <button class="dt-button buttons-selected buttons-remove disabled" type="button" disabled="disabled"><span>Delete</span></button></td>
+                        }
+                        
+                    </tr>
+                }
+                <a class="dt-button" asp-controller="Organization" asp-action="newOrganization"><span>Add New Organization</span></a>
+            </table>
+        </div>
+    </div>
+</section>
+
+<h2>Types</h2>
+<section class="adminsection">
+    <div class="mt-4 tablesection">
+        <div class="px-4 py-4">
+            <table class="row-border dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="Organizations_info">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Types</th>
+                        <th colspan="2">Controls</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model.Types)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Type_Name</td>
+                        @if (@Model.IsAdmin)
+                        {
+                        <td>@Html.ActionLink("Edit", "Update", "Types", new { id = item.Id }, new { @class = "dt-button buttons-selected buttons-edit" })</td>
+                        <td>@Html.ActionLink("Delete", "Delete", "Types", new { id = item.Id }, new { @class = "dt-button buttons-selected buttons-remove" })</td>
+                        }
+                        else
+                        {
+                            <td> <button class="dt-button buttons-selected buttons-edit disabled" type="button" disabled="disabled"><span>Edit</span></button></td>
+                            <td> <button class="dt-button buttons-selected buttons-remove disabled" type="button" disabled="disabled"><span>Delete</span></button></td>
+                        }
+                        
+                    </tr>
+                }
+                <a class="dt-button" asp-controller="Types" asp-action="newTypes"><span>Add New Type</span></a>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+<section class="adminsection">
+    <div class="mt-4 tablesection">
+        <div class="px-4 py-4">
+            <div id="Organizations_wrapper" class="dataTables_wrapper no-footer">
+                <div class="orgtitle"><div class="tableheader">Organizations</div></div>
+                <div class="dt-buttons">
+                    <button class="dt-button buttons-create" tabindex="0" aria-controls="Organizations" type="button"><span>New</span></button> <button class="dt-button buttons-selected buttons-edit disabled" tabindex="0" aria-controls="Organizations" type="button" disabled="disabled"><span>Edit</span></button> <button class="dt-button buttons-selected buttons-remove disabled" tabindex="0" aria-controls="Organizations" type="button" disabled="disabled"><span>Delete</span></button> <button class="dt-button" tabindex="0" aria-controls="Organizations" type="button" id="syncOrg"><span>Synchronize</span></button>
+                </div><div id="Organizations_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="Organizations"></label></div><table id="Organizations" class="row-border dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="Organizations_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="Organizations" rowspan="1" colspan="1" style="width: 628px;" aria-label="Organization: activate to sort column descending" aria-sort="ascending">Organization</th>
+                            <th class="sorting" tabindex="0" aria-controls="Organizations" rowspan="1" colspan="1" style="width: 409px;" aria-label="Parent Organization: activate to sort column ascending">Parent Organization</th>
+                            <th class="sorting" tabindex="0" aria-controls="Organizations" rowspan="1" colspan="1" style="width: 115px;" aria-label="Active: activate to sort column ascending">Active</th>
+                        </tr>
+                    </thead>
+                    <tbody><tr id="row_31" role="row" class="odd"><td class="sorting_1">Affinity Water</td><td>Aguardio</td><td><i class="fa fa-check"></i></td></tr><tr id="row_24" role="row" class="even"><td class="sorting_1">Aguardio demo</td><td>Aguardio</td><td><i class="fa fa-check"></i></td></tr><tr id="row_87" role="row" class="odd"><td class="sorting_1">Aguardio DEMO DK</td><td>Aguardio</td><td><i class="fa fa-check"></i></td></tr><tr id="row_66" role="row" class="even"><td class="sorting_1">Aguardio Trial</td><td>Aguardio</td><td><i class="fa fa-check"></i></td></tr><tr id="row_20" role="row" class="odd"><td class="sorting_1">Alpha Device Software</td><td>Aguardio</td><td><i class="fa fa-check"></i></td></tr><tr id="row_17" role="row" class="even"><td class="sorting_1">Anglian Water (Prod Software)</td><td>Aguardio</td><td><i class="fa fa-check"></i></td></tr><tr id="row_23" role="row" class="odd"><td class="sorting_1">Anglian Water (Test Software)</td><td>Aguardio</td><td><i class="fa fa-check"></i></td></tr><tr id="row_142" role="row" class="even"><td class="sorting_1">Baumuller</td><td>it.capture</td><td><i class="fa fa-check"></i></td></tr><tr id="row_19" role="row" class="odd"><td class="sorting_1">Beta Device Software</td><td>Aguardio</td><td><i class="fa fa-check"></i></td></tr><tr id="row_15" role="row" class="even"><td class="sorting_1">BPX Demo</td><td>BPX</td><td><i class="fa fa-check"></i></td></tr></tbody>
+                </table><div class="dataTables_info" id="Organizations_info" role="status" aria-live="polite">Showing 1 to 10 of 99 entries</div><div class="dataTables_paginate paging_simple_numbers" id="Organizations_paginate"><a class="paginate_button previous disabled" aria-controls="Organizations" data-dt-idx="0" tabindex="-1" id="Organizations_previous">Previous</a><span><a class="paginate_button current" aria-controls="Organizations" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="Organizations" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="Organizations" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="Organizations" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="Organizations" data-dt-idx="5" tabindex="0">5</a><span class="ellipsis">…</span><a class="paginate_button " aria-controls="Organizations" data-dt-idx="6" tabindex="0">10</a></span><a class="paginate_button next" aria-controls="Organizations" data-dt-idx="7" tabindex="0" id="Organizations_next">Next</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="adminsection">
+    <div class="mt-4 tablesection">
+        <div class="px-4 py-4">
+            <div id="Departments_wrapper" class="dataTables_wrapper no-footer">
+                <div class="departmenttitle"><div class="tableheader">Departments</div></div><div class="dt-buttons">      <button class="dt-button buttons-create" tabindex="0" aria-controls="Departments" type="button"><span>New</span></button> <button class="dt-button buttons-selected buttons-edit disabled" tabindex="0" aria-controls="Departments" type="button" disabled="disabled"><span>Edit</span></button> <button class="dt-button buttons-selected buttons-remove disabled" tabindex="0" aria-controls="Departments" type="button" disabled="disabled"><span>Delete</span></button> <button class="dt-button" tabindex="0" aria-controls="Departments" type="button" id="syncDep"><span>Synchronize</span></button> </div><div id="Departments_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="Departments"></label></div><table id="Departments" class="row-border dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="Departments_info">
+                    <thead>
+                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="Departments" rowspan="1" colspan="1" style="width: 510px;" aria-label="Department: activate to sort column descending" aria-sort="ascending">Department</th><th class="sorting" tabindex="0" aria-controls="Departments" rowspan="1" colspan="1" style="width: 520px;" aria-label="Organization: activate to sort column ascending">Organization</th><th class="sorting" tabindex="0" aria-controls="Departments" rowspan="1" colspan="1" style="width: 123px;" aria-label="Active: activate to sort column ascending">Active</th></tr>
+                    </thead>
+                    <tbody><tr id="row_92" role="row" class="odd"><td class="sorting_1">Aalborg Kongres &amp; Kultur Center</td><td>Masterclass hold 24</td><td><i class="fa fa-check"></i></td></tr><tr id="row_8" role="row" class="even"><td class="sorting_1">Alle bade                                         </td><td>Sandskaer Strandcamping</td><td><i class="fa fa-check"></i></td></tr><tr id="row_82" role="row" class="odd"><td class="sorting_1">Analytics Sales</td><td>DK Sales</td><td><i class="fa fa-check"></i></td></tr><tr id="row_86" role="row" class="even"><td class="sorting_1">Arctic Group </td><td>Masterclass hold 24</td><td><i class="fa fa-check"></i></td></tr><tr id="row_4" role="row" class="odd"><td class="sorting_1">Block A                                           </td><td>Cranfield University</td><td><i class="fa fa-check"></i></td></tr><tr id="row_9" role="row" class="even"><td class="sorting_1">Bygning A                                         </td><td>Sandskaer Strandcamping</td><td><i class="fa fa-check"></i></td></tr><tr id="row_10" role="row" class="odd"><td class="sorting_1">Bygning B                                         </td><td>Sandskaer Strandcamping</td><td><i class="fa fa-check"></i></td></tr><tr id="row_26" role="row" class="even"><td class="sorting_1">Control-Batt-Wells</td><td>Surrey University</td><td><i class="fa fa-check"></i></td></tr><tr id="row_27" role="row" class="odd"><td class="sorting_1">Control-CathedralC-7A</td><td>Surrey University</td><td><i class="fa fa-check"></i></td></tr><tr id="row_30" role="row" class="even"><td class="sorting_1">Control-SCourt-W</td><td>Surrey University</td><td><i class="fa fa-check"></i></td></tr></tbody>
+                </table><div class="dataTables_info" id="Departments_info" role="status" aria-live="polite">Showing 1 to 10 of 80 entries</div><div class="dataTables_paginate paging_simple_numbers" id="Departments_paginate"><a class="paginate_button previous disabled" aria-controls="Departments" data-dt-idx="0" tabindex="-1" id="Departments_previous">Previous</a><span><a class="paginate_button current" aria-controls="Departments" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="Departments" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="Departments" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="Departments" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="Departments" data-dt-idx="5" tabindex="0">5</a><span class="ellipsis">…</span><a class="paginate_button " aria-controls="Departments" data-dt-idx="6" tabindex="0">8</a></span><a class="paginate_button next" aria-controls="Departments" data-dt-idx="7" tabindex="0" id="Departments_next">Next</a></div>
+            </div>
+        </div>
+    </div>
+</section>

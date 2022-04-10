@@ -1,0 +1,163 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+
+    .tilerow > .col-md-6 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .tilerowsecondary {
+        margin-top: 5rem;
+    }
+}
+
+/* Overwrite adminlte styles*/
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; 
+}
+
+.nav-sidebar > .nav-item .nav-icon {
+    color: var(--main-color);    
+}
+
+.nav-sidebar > .nav-item > .nav-link.active {
+    background-color: var(--main-color) !important;
+}
+
+.nav-sidebar > .nav-item > .nav-link.active .nav-icon {
+    color: white;
+}
+
+.tileheader {   
+    margin-bottom: 20px;
+}
+
+.tileheadertext {
+    font-size: 1.10rem;
+    line-height: 35px;
+    padding-left: 5px;
+    font-weight: 400;
+    color: #363636;
+    height: auto;
+    border-bottom: 1px solid #c3c3c3;
+}
+
+.adminsection {
+    font-size: 90%;
+    color: #333333;
+}
+
+a.custom-card,
+a.custom-card:hover {
+    color: inherit;
+}
+
+.adminsection {
+margin-bottom: 3rem;
+}
+
+.pageheader {
+    color: var(--pageheader-textcolor);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.infoheader {
+    color: var(--main-color);
+    font-size: 1.1rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.tileheadertext {
+    color: var(--tileheader-textcolor);
+}
+
+.titan-cardtext {
+    color: var(--main-color) !important;
+    font-size: 15px;
+}
+
+.titan-card {
+    min-height: 175px;
+    max-width: 230px;
+}
+
+.card-body {   
+    padding: 0.8rem !important;
+}
+
+.brand-image-xs {
+    max-height: 38px !important;
+}
+
+.brand-image-xl {
+    max-height: 38px !important;
+}
+
+.titan-img-top {
+    /*border-bottom: 1px solid #c3c3c3;*/
+    box-shadow: 0px 15px 2px -15px #9F9F9F;
+    min-height: 125px;
+    position: relative;
+}
+
+.titan-thumbprint {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.company-logo, .main-sidebar:hover .company-logo {
+    background-image: url(https://titanit.io/staticwebcontent/custom-css/titan/logo.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    position: absolute;
+    width: calc(100% - 20px);
+    height: 38px;
+    top: 10px;
+    left: 20px;
+}
+
+.sidebar-collapse .company-logo {
+    background-image: url(https://titanit.io/staticwebcontent/custom-css/titan/logo_small.png);
+    background-size: 38px;
+}
