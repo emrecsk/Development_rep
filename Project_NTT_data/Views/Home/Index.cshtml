@@ -9,8 +9,7 @@
         <div class="px-4 py-4">
             <table class="row-border dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="Organizations_info">
                 <thead>
-                    <tr>
-                        <th>ID</th>
+                    <tr>                        
                         <th>Device Name</th>
                         <th>Location</th>
                         <th>Organization</th>
@@ -21,8 +20,7 @@
                 </thead>
                 @foreach (var item in Model.DeviceList)
                 {
-                    <tr>
-                        <td>@item.DeviceId</td>
+                    <tr>                        
                         <td>@item.Device_Name</td>
                         <td>@item.Loc_Name</td>
                         <td>@item.OrganizationName</td>

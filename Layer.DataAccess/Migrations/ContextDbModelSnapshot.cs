@@ -53,7 +53,7 @@ namespace Layer.DataAccess.Migrations
 
                     b.HasIndex("TypesId");
 
-                    b.ToTable("Devices");
+                    b.ToTable("Devices", (string)null);
 
                     b.HasData(
                         new
@@ -116,7 +116,7 @@ namespace Layer.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Locations");
+                    b.ToTable("Locations", (string)null);
 
                     b.HasData(
                         new
@@ -149,7 +149,7 @@ namespace Layer.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Organizations");
+                    b.ToTable("Organizations", (string)null);
 
                     b.HasData(
                         new
@@ -182,7 +182,7 @@ namespace Layer.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types");
+                    b.ToTable("Types", (string)null);
 
                     b.HasData(
                         new
@@ -223,7 +223,7 @@ namespace Layer.DataAccess.Migrations
 
                     b.HasIndex("OrganizationId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasData(
                         new

@@ -2,6 +2,7 @@
 using Layer.DataAccess.Concrete;
 using Layer.Entity.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -22,8 +23,9 @@ namespace Project_NTT_data.Controllers
         private readonly LocationManager _location;
         private readonly OrganizationManager _organization;
         private readonly TypesManager _typesManager;
+        private readonly IDataProtector _dataProtector;
 
-        public HomeController(ILogger<HomeController> logger, DeviceManager device, ContextDb contextDb, UserManager user, LocationManager location, OrganizationManager organization, TypesManager typesManager)
+        public HomeController(ILogger<HomeController> logger, DeviceManager device, ContextDb contextDb, UserManager user, LocationManager location, OrganizationManager organization, TypesManager typesManager, IDataProtectionProvider dataProtection)
         {
             _logger = logger;
             _device = device;
@@ -32,6 +34,7 @@ namespace Project_NTT_data.Controllers
             _location = location;
             _organization = organization;
             _typesManager = typesManager;
+            _dataProtector = dataProtection.CreateProtector("HomeControl");
         }
 
         public IActionResult Index()
@@ -53,6 +56,10 @@ namespace Project_NTT_data.Controllers
 
             }
             var devices = _device.GettAll();
+            devices.ForEach(d =>
+            {
+                d.CryptedID = _dataProtector.Protect(d.Id.ToString());
+            });
             var locations = _location.GettAll();
             var organizations = _organization.GettAll();
             var types = _typesManager.GettAll();
@@ -73,7 +80,7 @@ namespace Project_NTT_data.Controllers
                             OrganizationName = o.Org_Name,
                             TypeName = t.Type_Name,
                             TypesId = d.TypesId,
-                            DeviceId = d.Id
+                            DeviceId = d.CryptedID
                         }).ToList();
             modelList.DeviceList = list;
             modelList.IsAdmin = isAdmin;
@@ -88,9 +95,10 @@ namespace Project_NTT_data.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult Update(string id)
         {
-            Devices dv = _device.FindDevice(id);
+            int decryptedID = int.Parse(_dataProtector.Unprotect(id));
+            Devices dv = _device.FindDevice(decryptedID);
 
             SetListItems();
 

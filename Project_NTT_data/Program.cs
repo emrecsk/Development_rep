@@ -16,6 +16,7 @@ builder.Services.AddScoped<LocationManager>();
 builder.Services.AddScoped<OrganizationManager>();
 builder.Services.AddScoped<TypesManager>();
 
+builder.Services.AddDataProtection();
 builder.Services.AddDbContext<ContextDb>(x =>
 {
     x.UseSqlServer(builder.Configuration.GetConnectionString("conn"), option =>

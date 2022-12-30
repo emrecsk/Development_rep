@@ -2,7 +2,7 @@
 {
     public class DeviceViewModel
     {
-        public int DeviceId { get; set; }
+        public string DeviceId { get; set; }
 
         public bool IsActive { get; set; }
         public string? Device_Name { get; set; }

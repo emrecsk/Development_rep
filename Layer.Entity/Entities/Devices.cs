@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Layer.Entity.Entities
 {
@@ -16,5 +12,7 @@ namespace Layer.Entity.Entities
         public virtual Types Types { get; set; }
         public int OrganizationId { get; set; }
         public virtual Organization Organization { get; set; }
+        [NotMapped]
+        public string CryptedID { get; set; }
     }
 }
