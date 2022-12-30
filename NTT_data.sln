@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_NTT_data", "Project_NTT_data\Project_NTT_data.csproj", "{6D92CB71-74C0-4F11-9141-EF40756ED0D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project_NTT_data", "Project_NTT_data\Project_NTT_data.csproj", "{6D92CB71-74C0-4F11-9141-EF40756ED0D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Layer.Entity", "Layer.Entity\Layer.Entity.csproj", "{E25BD950-87D0-4B90-82F5-C784FCA32D01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Layer.Entity", "Layer.Entity\Layer.Entity.csproj", "{E25BD950-87D0-4B90-82F5-C784FCA32D01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Layer.DataAccess", "Layer.DataAccess\Layer.DataAccess.csproj", "{A3B3D875-3801-4A3E-B86D-3923F307C648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Layer.DataAccess", "Layer.DataAccess\Layer.DataAccess.csproj", "{A3B3D875-3801-4A3E-B86D-3923F307C648}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Layer.Business", "Layer.Business\Layer.Business.csproj", "{B0A3B8BF-DB89-4BA9-A21E-9439B24C0D03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Layer.Business", "Layer.Business\Layer.Business.csproj", "{B0A3B8BF-DB89-4BA9-A21E-9439B24C0D03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

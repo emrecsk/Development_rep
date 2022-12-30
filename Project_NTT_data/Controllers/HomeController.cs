@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Project_NTT_data.Extensions;
+using Project_NTT_data.Filters;
 using Project_NTT_data.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,7 +37,7 @@ namespace Project_NTT_data.Controllers
             _typesManager = typesManager;
             _dataProtector = dataProtection.CreateProtector("HomeControl");
         }
-
+        //[ServiceFilter(typeof(CheckWhiteList))] //eger listedeki ip'lerin disinda bir istek olursa yalnizca index sayfasina erisilemeyecek
         public IActionResult Index()
         {
             DeviceViewModelList modelList = new DeviceViewModelList();
