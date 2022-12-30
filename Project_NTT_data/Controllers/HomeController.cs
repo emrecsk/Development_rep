@@ -43,6 +43,7 @@ namespace Project_NTT_data.Controllers
             int? userID=null;
             bool isAdmin = true;
             var u = HttpContext.Session.GetObject<Users>("User");
+            var timelimitedprotector = _dataProtector.ToTimeLimitedDataProtector();
             if (u == null)
             {
                 var user = _user.GetAdmin();
@@ -61,6 +62,10 @@ namespace Project_NTT_data.Controllers
                 d.CryptedID = _dataProtector.Protect(d.Id.ToString());
             });
             var locations = _location.GettAll();
+            locations.ForEach(l =>
+            {
+                l.CrypetedID = timelimitedprotector.Protect(l.Id.ToString(), TimeSpan.FromSeconds(10)); //Temporary crypted ID for 10 seconds
+            });
             var organizations = _organization.GettAll();
             var types = _typesManager.GettAll();
             var users = _user.GettAll();
@@ -74,7 +79,7 @@ namespace Project_NTT_data.Controllers
                         {
                             Device_Name = d.Device_Name,
                             IsActive = d.IsActive,
-                            LocationId = d.LocationId,
+                            LocationId = d.CryptedID,
                             Loc_Name = l.Loc_Name,
                             OrganizationId = d.OrganizationId,
                             OrganizationName = o.Org_Name,

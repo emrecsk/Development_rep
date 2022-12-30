@@ -1,5 +1,6 @@
 ﻿using Layer.Business;
 using Layer.Entity.Entities;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Project_NTT_data.Extensions;
 
@@ -8,10 +9,12 @@ namespace Project_NTT_data.Controllers
     public class LocationController : Controller
     {
         private readonly LocationManager _location;
+        private readonly IDataProtector _dataProtector;
 
-        public LocationController(LocationManager location)
+        public LocationController(LocationManager location, IDataProtectionProvider dataProtection)
         {
             _location = location;
+            _dataProtector = dataProtection.CreateProtector("HomeControl"); //This CreateProtector name must be same with the one on home controller
         }
 
         [HttpGet]
@@ -38,12 +41,15 @@ namespace Project_NTT_data.Controllers
                 return RedirectToAction("Index", "Home");            
         }
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult Update(string id)
         {
             var sessionObj = HttpContext.Session.GetObject<Users>("User");
+            var timelimited = _dataProtector.ToTimeLimitedDataProtector();
+
             if (sessionObj.IsAdmin)
             {
-                Location location = _location.findLocation(id);
+                int decrypetedID = int.Parse(timelimited.Unprotect(id));
+                Location location = _location.findLocation(decrypetedID);
             return View(location);
             }
             else

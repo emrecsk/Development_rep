@@ -75,7 +75,7 @@
                         <td>@item.Loc_Name</td>
                         @if (@Model.IsAdmin)
                         {
-                            <td>@Html.ActionLink("Edit", "Update", "Location", new { id = item.Id }, new { @class = "dt-button buttons-selected buttons-edit"})</td>
+                            <td>@Html.ActionLink("Edit", "Update", "Location", new { id = item.CrypetedID }, new { @class = "dt-button buttons-selected buttons-edit"})</td>
                             <td>@Html.ActionLink("Delete", "Delete", "Location", new { id = item.Id }, new { @class = "dt-button buttons-selected buttons-remove"})</td>
 
                         }
