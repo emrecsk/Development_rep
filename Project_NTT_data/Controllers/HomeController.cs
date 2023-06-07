@@ -105,7 +105,7 @@ namespace Project_NTT_data.Controllers
         {
             int decryptedID = int.Parse(_dataProtector.Unprotect(id));
             Devices dv = _device.FindDevice(decryptedID);
-
+            dv.CryptedID = id;
             SetListItems();
 
             return View(dv);
@@ -113,6 +113,8 @@ namespace Project_NTT_data.Controllers
         [HttpPost]
         public IActionResult Update(Devices p)
         {
+            int decryptedID = int.Parse(_dataProtector.Unprotect(p.CryptedID));
+            p.Id = decryptedID;
             _device.updateDevice(p);
             return RedirectToAction("Index");
         }
